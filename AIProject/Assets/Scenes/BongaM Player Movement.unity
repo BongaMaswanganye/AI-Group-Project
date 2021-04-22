@@ -844,7 +844,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitLayer:
+<<<<<<< Updated upstream
     serializedVersion: 2
+=======
+>>>>>>> Stashed changes
     m_Bits: 55
 --- !u!1 &475727705
 GameObject:
@@ -1125,12 +1128,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Obstacle:
+<<<<<<< Updated upstream
     serializedVersion: 2
+=======
+>>>>>>> Stashed changes
     m_Bits: 64
   StartPosition: {fileID: 1100235092}
   GridSize: {x: 90, y: 90}
   NodeRadius: 1
   NodeDistance: 0
+<<<<<<< Updated upstream
+=======
+  NodeDiameter: 0
+  GridX: 0
+  GridY: 0
+>>>>>>> Stashed changes
 --- !u!4 &1011809841
 Transform:
   m_ObjectHideFlags: 0
@@ -1157,6 +1169,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 524836619cacd1640bd08d44f49b7c7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
+=======
+  Grid: {fileID: 0}
+>>>>>>> Stashed changes
   Start: {fileID: 1100235092}
   Target: {fileID: 449053410}
 --- !u!1 &1038508446
