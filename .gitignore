@@ -35,17 +35,6 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
-AIProject/Logs/AssetImportWorker0.log
-AIProject/Logs/shadercompiler-AssetImportWorker0.log
-AIProject/Logs/shadercompiler-UnityShaderCompiler.exe0.log
-AIProject/Logs/shadercompiler-UnityShaderCompiler.exe1.log
-AIProject/Logs/shadercompiler-UnityShaderCompiler.exe10.log
-AIProject/Logs/shadercompiler-UnityShaderCompiler.exe11.log
-AIProject/Logs/shadercompiler-UnityShaderCompiler.exe2.log
-AIProject/Logs/shadercompiler-UnityShaderCompiler.exe3.log
-AIProject/Logs/shadercompiler-UnityShaderCompiler.exe4.log
-AIProject/Logs/shadercompiler-UnityShaderCompiler.exe5.log
-AIProject/Logs/shadercompiler-UnityShaderCompiler.exe6.log
-AIProject/Logs/shadercompiler-UnityShaderCompiler.exe7.log
-AIProject/Logs/shadercompiler-UnityShaderCompiler.exe8.log
-AIProject/Logs/shadercompiler-UnityShaderCompiler.exe9.log
+*.log
+
+
