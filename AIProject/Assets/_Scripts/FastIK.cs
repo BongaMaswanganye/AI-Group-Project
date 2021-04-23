@@ -11,7 +11,7 @@ public class FastIK : MonoBehaviour
     public Transform pole;
 
     protected float[] bonesLength;
-    protected float completeLength;
+    public float completeLength;
     protected Transform[] bones;
     protected Vector3[] positions;
     protected Vector3[] startDirectionSuccessor;
