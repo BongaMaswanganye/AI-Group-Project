@@ -5,24 +5,34 @@ using UnityEngine;
 public class PathFinding : MonoBehaviour
 {
     grid Grid;
+    GameObject Player;
     public Transform Start;
     public Transform Target;
-
+    bool pathfound;
     private void Awake()
     {
         Grid = GetComponent<grid>();
+        Player = Start.gameObject;
+        pathfound = false;
     }
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
+            StopAllCoroutines();
             FindPath(Start.position, Target.position);
+            if (pathfound)
+            {
+                StartCoroutine(lerpPlayer());
+            }
         }
+
     }
 
     public void FindPath(Vector3 StartPos, Vector3 EndPos)
     {
-        Debug.Log("finding Path");
+        pathfound = false;
+       // Debug.Log("finding Path");
         Node StartPosition = Grid.NodeWorldPosition(StartPos);
         Start.position = StartPosition.Position;
         Grid.StartingNode = StartPosition;
@@ -52,13 +62,15 @@ public class PathFinding : MonoBehaviour
                 closedList.Add(CurrentPos);
             }
 
-            Debug.Log("nodes in closed list: "+ closedList.Count);
-            Debug.Log("Nodes in Open list: " + openList.Count);
+           // Debug.Log("nodes in closed list: "+ closedList.Count);
+            //Debug.Log("Nodes in Open list: " + openList.Count);
 
             if (CurrentPos == EndPosition)
             {
                 GetFinalPath(StartPosition, EndPosition);
-                Debug.Log("Path Found");
+                //Debug.Log("Path Found");
+                pathfound = true;
+
                 return;
             }
 
@@ -81,7 +93,7 @@ public class PathFinding : MonoBehaviour
                 }
             }
         }
-        Debug.Log("didnt find target");
+        //Debug.Log("didnt find target");
         
     }
 
@@ -91,6 +103,26 @@ public class PathFinding : MonoBehaviour
         int y = Mathf.Abs(A.NodeY - B.NodeY);
 
         return x + y;
+    }
+    IEnumerator lerpPlayer()
+    { 
+        int t = 0;
+        while (Player.transform.position != Grid.EndingNode.Position)
+        {
+            MovePlayer(Grid.FinalPath[t].Position);
+            Debug.Log(t);
+            t++;
+            yield return new WaitForSeconds(1);
+
+        }
+
+
+    }
+
+    void MovePlayer(Vector3 NewLocation)
+    {
+        Player.transform.position = NewLocation;
+        Start.position = NewLocation;
     }
 
     void GetFinalPath(Node StartNode, Node EndNode)
