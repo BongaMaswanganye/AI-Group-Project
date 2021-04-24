@@ -1,3 +1,6 @@
+//Connor McClelland
+// Mostly from https://www.youtube.com/watch?v=qqOAzn05fvk&list=LL&index=6 with some slight changes
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

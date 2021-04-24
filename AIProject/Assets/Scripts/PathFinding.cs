@@ -1,3 +1,7 @@
+//Connor McClelland
+//Fuck Lerping in Coroutines that use nested while statements (:
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +12,7 @@ public class PathFinding : MonoBehaviour
     GameObject Player;
     public Transform Start;
     public Transform Target;
+    public float lerpTime = 1f;
     bool pathfound;
     private void Awake()
     {
@@ -23,7 +28,7 @@ public class PathFinding : MonoBehaviour
             FindPath(Start.position, Target.position);
             if (pathfound)
             {
-                StartCoroutine(lerpPlayer());
+                StartCoroutine(lerpPlayer(lerpTime));
             }
         }
 
@@ -104,15 +109,25 @@ public class PathFinding : MonoBehaviour
 
         return x + y;
     }
-    IEnumerator lerpPlayer()
+    IEnumerator lerpPlayer(float time)
     { 
-        int t = 0;
-        while (Player.transform.position != Grid.EndingNode.Position)
+        float elapsedTime = 0f;
+        Vector3 startPos = Player.transform.position;
+        //while (Player.transform.position != Grid.EndingNode.Position)
+        for(int i = 0; i < Grid.FinalPath.Count; i++)
         {
-            MovePlayer(Grid.FinalPath[t].Position);
-            Debug.Log(t);
-            t++;
-            yield return new WaitForSeconds(1);
+            while(elapsedTime <= 1)
+            {
+                Player.transform.position = Vector3.Lerp(startPos, Grid.FinalPath[i].Position, elapsedTime);
+                elapsedTime += Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+            startPos = Grid.FinalPath[i].Position;
+            elapsedTime = 0f;
+            //MovePlayer(Grid.FinalPath[t].Position);
+            Debug.LogWarning(i);
+            //t++;
+            yield return null;
 
         }
 
